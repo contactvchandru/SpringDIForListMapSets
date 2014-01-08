@@ -1,0 +1,61 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+<context:component-scan base-package="com.chandruvv.common" />
+
+<!-- Setter Injection -->
+
+	<bean id="helloBean" class="com.chandruvv.common.HelloWorld"
+	init-method="initmethod" destroy-method="destroymethod" scope="prototype">
+		<property  name="name" value="chandru" />
+		<property name="age" value="33"/>
+	</bean>
+	
+	<!--  Constructor injection -->
+	<bean id="conbean" class="com.chandruvv.common.HelloWorld" scope="singleton">
+	  <constructor-arg index="0" type="java.lang.String" value="convalue">
+	  </constructor-arg>
+	</bean>
+	
+	<bean id="conbean1" class="com.chandruvv.common.HelloWorld">
+	 <constructor-arg  index="0" type="int" value="33"/>
+	 <constructor-arg index="1" type="java.lang.String" value="secondcon"/>
+	</bean>
+	
+		<bean id="conbean2" class="com.chandruvv.common.HelloWorld">
+		<property name="listobjs">
+		<list>
+		<value>"chandruv"</value>
+		<value>"harsha"</value>
+		<value>"chaitu"</value>
+		</list>
+		</property>
+	    </bean>
+	
+	<bean id="conbean3" class="com.chandruvv.common.HelloWorld">
+	<property name="map">
+	<map>
+	<entry key="chandruv" value="1"/>
+	<entry key="harsha" value="2"/>
+	<entry key="chaitu" value="3"/>
+	</map>
+	</property>
+	</bean>
+	
+	<bean id="conbean4" class="com.chandruvv.common.HelloWorld">
+		<property name="sets">
+		<set>
+		<value>"chandruv1"</value>
+		<value>"harsha1"</value>
+		<value>"chaitu1"</value>
+		</set>
+		</property>
+	</bean>
+	
+</beans>
